@@ -1,0 +1,32 @@
+<%- include('partials/header', { warning }) %>
+<section>
+  <h2>Výsledek resolve</h2>
+  <% if (media.thumbnailUrl) { %>
+  <img src="<%= media.thumbnailUrl %>" alt="thumbnail" class="thumb" />
+  <% } %>
+  <ul>
+    <li><strong>Platforma:</strong> <%= media.platform %></li>
+    <li><strong>Titul:</strong> <%= media.title || '-' %></li>
+    <li><strong>Autor:</strong> <%= media.author || '-' %></li>
+    <li><strong>Délka:</strong> <%= media.durationSeconds || '-' %> s</li>
+  </ul>
+
+  <form method="post" action="/download" onsubmit="this.querySelector('button').disabled=true;this.querySelector('button').innerText='Zpracování…';">
+    <input type="hidden" name="originalUrl" value="<%= media.originalUrl %>" />
+    <input type="hidden" name="title" value="<%= media.title || '' %>" />
+    <label for="selectedOutputType">Typ výstupu</label>
+    <select id="selectedOutputType" name="selectedOutputType" required>
+      <option value="mp4">Video (MP4)</option>
+      <option value="mp3">Audio (MP3)</option>
+    </select>
+
+    <label for="selectedQuality">Kvalita / varianta</label>
+    <select id="selectedQuality" name="selectedQuality" required>
+      <% media.availableVariants.forEach(function(v) { %>
+      <option value="<%= v.id %>"><%= v.qualityLabel %> | id=<%= v.id %> | <%= v.ext %> <% if (v.estimatedSizeBytes) { %> | ~<%= Math.round(v.estimatedSizeBytes / 1024 / 1024) %> MB <% } %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Stáhnout</button>
+  </form>
+</section>
+<%- include('partials/footer') %>

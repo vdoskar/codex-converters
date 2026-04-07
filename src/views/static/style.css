@@ -1,0 +1,14 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f8; color: #111; }
+.container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+header { display: flex; justify-content: space-between; align-items: center; }
+nav a { margin-right: 1rem; }
+form { display: grid; gap: .75rem; background: #fff; padding: 1rem; border-radius: 8px; }
+input, select, button { padding: .65rem; font-size: 1rem; }
+button { cursor: pointer; }
+.error { color: #b00020; }
+.warning { background: #fff3cd; padding: .75rem; border-radius: 6px; }
+.thumb { width: 240px; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { border: 1px solid #ddd; padding: .5rem; text-align: left; }
+.url { max-width: 240px; word-break: break-all; }
+@media (max-width: 700px) { table { font-size: .85rem; display: block; overflow-x: auto; } }
