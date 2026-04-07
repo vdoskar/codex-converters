@@ -1,0 +1,12 @@
+<%- include('partials/header', { warning }) %>
+<section>
+  <form method="post" action="/resolve">
+    <label for="url">URL videa</label>
+    <input id="url" name="url" type="url" required placeholder="https://..." value="<%= inputUrl %>" />
+    <button type="submit">Načíst možnosti</button>
+  </form>
+  <% if (error) { %>
+  <p class="error"><%= error %></p>
+  <% } %>
+</section>
+<%- include('partials/footer') %>
