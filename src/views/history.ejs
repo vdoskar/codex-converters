@@ -1,0 +1,26 @@
+<%- include('partials/header', { warning }) %>
+<section>
+  <h2>Historie</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>createdAt</th><th>URL</th><th>platform</th><th>title</th><th>output</th><th>quality</th><th>status</th><th>error</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% items.forEach(function(item) { %>
+      <tr>
+        <td><%= item.createdAt %></td>
+        <td class="url"><%= item.originalUrl %></td>
+        <td><%= item.platform || '-' %></td>
+        <td><%= item.title || '-' %></td>
+        <td><%= item.selectedOutputType || '-' %></td>
+        <td><%= item.selectedQuality || '-' %></td>
+        <td><%= item.status %></td>
+        <td><%= item.errorMessage || '-' %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('partials/footer') %>
